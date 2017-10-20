@@ -1,0 +1,44 @@
+<section class="weather-wrap">
+  <div class="row">
+    <div class="col m3"></div>
+    <div class="col s12 m6">
+      <div class="card">
+        <div class="card-content" *ngIf="cityTemperature" [ngStyle]="{'background': backgroundGradient}">
+          <div (click)="updateFavoriteList()" class="favorite-wrap">
+            <span class="card-title city-name">{{cityNameActual}}</span>          
+            <span class="material-icons setFav tooltipped" data-position="top" data-delay="30" data-tooltip="Add favorite" alt="Favorite" id="favoriteIcon" *ngIf="cityIsFavorite == false">favorite_border</span>
+            <span class="material-icons setFav tooltipped" data-position="top" data-delay="30" data-tooltip="Remove favorite" alt="Favorite" id="favoriteIcon" *ngIf="cityIsFavorite == true">favorite</span>
+          </div>
+          <div class="city-temperature">{{cityTemperature}}</div>
+          <p> {{cityWeatherDescription}} with winds approaching {{cityWeatherWindSpeed}} mph.</p>
+        </div>
+        <div class="card-action">
+          <!-- <a href="#">5 Day Forecast</a> -->
+          <div class="favorites-list">
+            <ul>
+                <li *ngFor="let hero of cityNameListArray">
+                    <a (click)="getWeatherData( hero )">{{ hero }}</a>
+                  </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col m3">
+    </div>
+  </div>
+</section>
+
+<div class="search-wrap container">
+  <form materialize class="col s12" name="cityWeatherSearch">
+    <div class="row">
+      <div class="input-field col s6 offset-s3">
+        <input placeholder="City name or Coordinates" id="jsLocationInput" type="text" class="validate" name="cityName" [(ngModel)]=cityName>
+        <label for="jsLocationInput">Search for Weather</label>
+      </div>
+      <button class="btn waves-effect waves-light blue col s4 offset-s4 " type="submit" name="action" (click)="getWeatherData(cityName)">Search
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+  </form>
+</div>

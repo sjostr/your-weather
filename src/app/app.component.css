@@ -1,0 +1,165 @@
+.temperature-wrap {
+
+}
+a:hover {
+    cursor: pointer;
+}
+header h1 {
+    color: #308dff;
+    font-size: 30px;
+}
+.temperature-wrap {
+}
+.active {
+}
+.favorite-wrap {
+    display: inline-block;
+    padding: 10px 10px 0;
+    background-color: rgba(255,255,255,0.7);
+    border: 1px solid rgba(255,255,255,0.7);
+    border-radius: 4px;
+}
+.favorite-wrap .card-title {
+    display: inline-block;
+}
+.setFav {
+    cursor: pointer;
+    color: #FF4136;
+}
+.temperature-value {
+    color: #fff;
+}
+.temperature-minmax ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    color: #fafad2;
+}
+.temperature-minmax ul li {
+    display: inline-block;
+}
+
+
+    .hero .demo-card {
+    width: 320px;
+    background-color: white;
+    }
+
+    .hero {
+    min-height: 480px;
+    }
+
+    .demo-card {
+    max-width: 21.875rem;
+    /* 350sp */
+    margin: 0 auto 48px;
+    }
+
+    @media(min-width: 768px) {
+    .demo-card {
+        margin-bottom: 24px;
+    }
+    }
+
+    .demo-card--with-avatar .mdc-card__primary {
+    position: relative;
+    }
+
+    .demo-card--with-avatar .demo-card__avatar {
+    position: absolute;
+    background: #bdbdbd;
+    height: 2.5rem;
+    /* 40sp */
+    width: 2.5rem;
+    /* 40sp */
+    border-radius: 50%;
+    }
+
+    .demo-card--with-avatar .mdc-card__title,
+    .demo-card--with-avatar .mdc-card__subtitle {
+    margin-left: 56px;
+    }
+
+    [dir="rtl"] .demo-card--with-avatar .mdc-card__title,
+    [dir="rtl"] .demo-card--with-avatar .mdc-card__subtitle {
+    margin-right: 56px;
+    margin-left: initial;
+    }
+
+    .demo-card__16-9-media {
+    background: #308dff; /* Old browsers */
+    background: linear-gradient(160deg, #308dff 0%,#89ffd3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    /*height: 12.313rem;*/
+    /* 197sp, for 16:9 ratio with 350sp demo card width */
+    }
+
+    .demo-card--small .mdc-card__media {
+    background: #308dff; /* Old browsers */
+    background: linear-gradient(160deg, #308dff 0%,#89ffd3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    height: 10.938rem;
+    /* 175sp, for 1:1 ratio with 175sp demo card width */
+    }
+
+    .demo-card--bg-demo {
+    height: 21.875rem;
+    /* 350sp */
+    background: #308dff; /* Old browsers */
+    background: linear-gradient(160deg, #308dff 0%,#89ffd3 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    
+    /* HOT (74 and up) - FF3232 to FFD589 */
+    /* WARM (53 to 73) */
+    /* COLD (32 to 52) */
+    /* FREEZING (below 32) */
+    
+    
+    
+    
+    }
+
+    .demo-card--bg-demo .mdc-card__primary,
+    .demo-card--bg-demo .mdc-card__actions {
+    background: rgba(0, 0, 0, .4);
+    }
+
+    #demo-wrapper {
+    margin: 24px;
+    display: flex;
+    flex-flow: row wrap;
+    align-content: left;
+    justify-content: left;
+    }
+
+    #demo-wrapper .demo-card {
+    margin: 24px;
+    min-width: 320px;
+    }
+    .weather-summary::first-letter {
+        text-transform: capitalize;
+    }
+    .center-text {
+        text-align: center;
+    }
+    .city-temperature {
+        font-size: 80px;
+        color: #fff;
+        text-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+    }
+    .city-name {
+        font-size: 25px;
+        text-shadow: 1px 2px 3px rgba(0,0,0,0.1);
+        color: #666;
+    }
+
+    .weather-wrap {
+        width: 100%;
+    }
+    .search-wrap {
+        padding: 30px;
+    }
+    .card .card-content p {
+        color: #fff;
+
+    }
+    .card .card-content p::first-letter {
+        text-transform: uppercase;
+    }
