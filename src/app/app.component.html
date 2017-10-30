@@ -12,7 +12,7 @@
           <div class="city-temperature">{{cityTemperature}}</div>
           <p> {{cityWeatherDescription}} with winds approaching {{cityWeatherWindSpeed}} mph.</p>
         </div>
-        <div class="card-action">
+        <div class="card-action" *ngIf="displayList">
           <!-- <a href="#">5 Day Forecast</a> -->
           <div class="favorites-list">
             <ul>
@@ -26,6 +26,9 @@
     </div>
     <div class="col m3">
     </div>
+  </div>
+  <div>
+    <button>This Button</button>
   </div>
 </section>
 
