@@ -11,20 +11,57 @@ export class AppComponent implements AfterViewInit{
   ngAfterViewInit() {
     //setTimeout(_=> this.getLocalData("citySearchList"));
     //setTimeout(localCitySearchList =>  JSON.parse(localStorage.getItem("citySearchList")) );
-    setTimeout(cityNameListArray =>  JSON.parse(localStorage.getItem("cityNameListArray")) );
-    this.localCitySearchName = localStorage.getItem("citySearchName");
+
+    //let cityNameListArray = JSON.parse(localStorage.getItem("cityNameListArray"));
+    let cityNameListArray = this.getCityArrayLocalStorage("cityNameListArray");
+
+    this.cityIsFavorite = true;
+
+    console.log("citynamelistarray: " + cityNameListArray[0]);
+    //this.localCitySearchName = localStorage.getItem("citySearchName");
+
     //this.cityFav = localStorage.getItem("cityFavorite");
+    //console.log(this.cityNameListArray);
+
+    console.log("cityIsFavorite: "+this.cityIsFavorite);
 
     // display the first fav city in the list....
-    if(this.cityNameListArray.length > 0) {
-      console.log("there is something in the array");
-      this.getWeatherData(this.cityNameListArray[0]);
+    if(cityNameListArray.length > 0) {
+      this.getWeatherData(cityNameListArray[0]);
+      //this.updateFavoriteList();
+      //this.favoriteCityToggle();
+      
+
+      console.log("cityIsFavorite: "+this.cityIsFavorite);
+
+
     }
     
     
   }
+
+// page loads
+//  if a favorites array exists
+//     load the first item from array
+//        highlight the favorites icon
+//        search for the weather for that item(city)
+//  else display only search
+
+// functions needed for this to work....
+
+// get local storage
+// highlight favorites icon
+
+getCityArrayLocalStorage(ls_key) {  
+  return JSON.parse(localStorage.getItem(ls_key));
+}
+
+
+
+
+
   constructor(private http: Http) {}
-    cityIsFavorite = false;
+    cityIsFavorite = true;
     wasClicked = false;
     cityFav = "";
     localCitySearchName = "";
@@ -39,9 +76,18 @@ export class AppComponent implements AfterViewInit{
     cityNameListArray = [ ] as Array<any>;
     storedCityData = {};
     backgroundGradient = "";
+    displayList = false;
     
     title = 'Your Weather';
-  
+
+  favoriteCityToggle() { 
+    if(this.cityNameListArray.indexOf(this.cityNameActual) != -1){
+      this.cityIsFavorite = true;
+    } else {
+      this.cityIsFavorite = false;
+    }
+  } 
+
   getWeatherData(cityName) {
     this.http.get('http://api.openweathermap.org/data/2.5/weather?APPID=' + environment.appID + '&units=imperial&q=' + cityName )
     .subscribe (
@@ -57,12 +103,7 @@ export class AppComponent implements AfterViewInit{
         this.cityWeatherWindSpeed =  Math.round(parseInt(weatherCity.wind.speed));
         //this.storeLocalData();
 
-        if(this.cityNameListArray.indexOf(this.cityNameActual) != -1){
-          this.cityIsFavorite = true;
-        } else {
-          this.cityIsFavorite = false;
-        }
-
+        this.favoriteCityToggle();
         // dynamic gradient backgorund based on temperature
         if ( this.cityTemperature >= 95 ){
           this.backgroundGradient = "linear-gradient(160deg, #000000 0%,red 100%)";
@@ -85,6 +126,14 @@ export class AppComponent implements AfterViewInit{
   
   // click the icon, add OR remove from favorites list
   updateFavoriteList(){
+
+    // hide or show the list if there is anything to display
+    if (this.cityNameListArray.length > 0)
+        this.displayList = true;
+    else {
+      this.displayList = false;
+    }
+
     if(this.cityNameListArray.indexOf(this.cityNameActual) != -1){
       // city is not a favorite, hide icon
       this.cityIsFavorite = false;
